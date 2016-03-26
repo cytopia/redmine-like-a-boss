@@ -1,0 +1,3 @@
+[submodule "redmine"]
+	path = redmine
+	url = https://github.com/redmine/redmine
