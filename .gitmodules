@@ -103,3 +103,9 @@
 [submodule "redmine-plugins/redmine_gist"]
 	path = redmine-plugins/redmine_gist
 	url = https://github.com/dergachev/redmine_gist
+[submodule "redmine-plugins/sidebar_hide"]
+	path = redmine-plugins/sidebar_hide
+	url = https://github.com/bdemirkir/sidebar_hide
+[submodule "redmine-themes/gitmike"]
+	path = redmine-themes/gitmike
+	url = https://github.com/makotokw/redmine-theme-gitmike
