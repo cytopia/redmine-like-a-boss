@@ -1,3 +1,96 @@
 [submodule "redmine"]
 	path = redmine
 	url = https://github.com/redmine/redmine
+[submodule "redmine-plugins/redmine_tweaks"]
+	path = redmine-plugins/redmine_tweaks
+	url = https://github.com/alexandermeindl/redmine_tweaks
+[submodule "redmine-plugins/redmine_tags"]
+	path = redmine-plugins/redmine_tags
+	url = https://github.com/ixti/redmine_tags
+[submodule "redmine-plugins/issuefy"]
+	path = redmine-plugins/issuefy
+	url = https://github.com/tchx84/issuefy
+[submodule "redmine-plugins/redmine_accouncements"]
+	path = redmine-plugins/redmine_accouncements
+	url = https://github.com/buoyant/redmine_announcements
+[submodule "redmine-plugins/recurring_tasks"]
+	path = redmine-plugins/recurring_tasks
+	url = https://github.com/nutso/redmine-plugin-recurring-tasks
+[submodule "redmine-plugins/redmine_dashboard"]
+	path = redmine-plugins/redmine_dashboard
+	url = https://github.com/jgraichen/redmine_dashboard
+[submodule "redmine-plugins/unread_issues"]
+	path = redmine-plugins/unread_issues
+	url = https://github.com/tdvsdv/unread_issues
+[submodule "redmine-plugins/progressive_projects_list"]
+	path = redmine-plugins/progressive_projects_list
+	url = https://github.com/stgeneral/redmine-progressive-projects-list
+[submodule "redmine-themes/redmine-progressive-theme"]
+	path = redmine-themes/redmine-progressive-theme
+	url = https://github.com/stgeneral/redmine-progressive-theme
+[submodule "redmine-plugins/redmine_people"]
+	path = redmine-plugins/redmine_people
+	url = https://github.com/RCRM/redmine_people
+[submodule "redmine-plugins/redmine_questions"]
+	path = redmine-plugins/redmine_questions
+	url = https://github.com/RCRM/redmine_questions
+[submodule "redmine-themes/a1-theme"]
+	path = redmine-themes/a1-theme
+	url = https://github.com/RCRM/a1
+[submodule "redmine-themes/circle-theme"]
+	path = redmine-themes/circle-theme
+	url = https://github.com/RCRM/circle
+[submodule "redmine-plugins/redmine_contacts_invoices"]
+	path = redmine-plugins/redmine_contacts_invoices
+	url = https://github.com/RCRM/redmine_contacts_invoices
+[submodule "redmine-plugins/redmine_finance"]
+	path = redmine-plugins/redmine_finance
+	url = https://github.com/RCRM/redmine_finance
+[submodule "redmine-plugins/redmine_contacts"]
+	path = redmine-plugins/redmine_contacts
+	url = https://github.com/RCRM/redmine_contacts
+[submodule "redmine-plugins/redmine_checklists"]
+	path = redmine-plugins/redmine_checklists
+	url = https://github.com/RCRM/redmine_checklists
+[submodule "redmine-plugins/redmine_agile"]
+	path = redmine-plugins/redmine_agile
+	url = https://github.com/RCRM/redmine_agile
+[submodule "redmine-plugins/redmine_zenedit"]
+	path = redmine-plugins/redmine_zenedit
+	url = https://github.com/RCRM/redmine_zenedit
+[submodule "redmine-themes/redminecrm-theme"]
+	path = redmine-themes/redminecrm-theme
+	url = https://github.com/RCRM/redminecrm
+[submodule "redmine-themes/coffee-theme"]
+	path = redmine-themes/coffee-theme
+	url = https://github.com/RCRM/coffee
+[submodule "redmine-themes/highrise-theme"]
+	path = redmine-themes/highrise-theme
+	url = https://github.com/RCRM/highrise
+[submodule "redmine-plugins/redmine_cms"]
+	path = redmine-plugins/redmine_cms
+	url = https://github.com/RCRM/redmine_cms
+[submodule "redmine-plugins/redmine_favorite_projects"]
+	path = redmine-plugins/redmine_favorite_projects
+	url = https://github.com/RCRM/redmine_favorite_projects
+[submodule "redmine-plugins/redmine_announcements"]
+	path = redmine-plugins/redmine_announcements
+	url = https://github.com/buoyant/redmine_announcements
+[submodule "redmine-plugins/redmine_issues_tree"]
+	path = redmine-plugins/redmine_issues_tree
+	url = https://github.com/Loriowar/redmine_issues_tree
+[submodule "redmine-plugins/redmine_my_page"]
+	path = redmine-plugins/redmine_my_page
+	url = https://github.com/jrupesh/redmine_my_page
+[submodule "redmine-plugins/redmine_improved_searchbox"]
+	path = redmine-plugins/redmine_improved_searchbox
+	url = https://github.com/Haixing-Hu/redmine_improved_searchbox
+[submodule "redmine-plugins/redmine_dmsf"]
+	path = redmine-plugins/redmine_dmsf
+	url = https://github.com/danmunn/redmine_dmsf
+[submodule "redmine-plugins/usability"]
+	path = redmine-plugins/usability
+	url = https://github.com/tdvsdv/usability
+[submodule "redmine-plugins/redmine_planning"]
+	path = redmine-plugins/redmine_planning
+	url = https://github.com/MadEgg/redmine_planning
