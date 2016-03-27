@@ -94,3 +94,12 @@
 [submodule "redmine-plugins/redmine_planning"]
 	path = redmine-plugins/redmine_planning
 	url = https://github.com/MadEgg/redmine_planning
+[submodule "redmine-plugins/line_numbers"]
+	path = redmine-plugins/line_numbers
+	url = https://github.com/cdwertmann/line_numbers
+[submodule "redmine-plugins/redmine_didyoumean"]
+	path = redmine-plugins/redmine_didyoumean
+	url = https://github.com/abahgat/redmine_didyoumean
+[submodule "redmine-plugins/redmine_gist"]
+	path = redmine-plugins/redmine_gist
+	url = https://github.com/dergachev/redmine_gist
