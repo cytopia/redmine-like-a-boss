@@ -16,9 +16,6 @@
 [submodule "redmine-plugins/redmine_dashboard"]
 	path = redmine-plugins/redmine_dashboard
 	url = https://github.com/jgraichen/redmine_dashboard
-[submodule "redmine-plugins/unread_issues"]
-	path = redmine-plugins/unread_issues
-	url = https://github.com/tdvsdv/unread_issues
 [submodule "redmine-plugins/progressive_projects_list"]
 	path = redmine-plugins/progressive_projects_list
 	url = https://github.com/stgeneral/redmine-progressive-projects-list
@@ -109,3 +106,6 @@
 [submodule "redmine-plugins/redmine_improved_searchbox"]
 	path = redmine-plugins/redmine_improved_searchbox
 	url = https://github.com/ries-tech/redmine_improved_searchbox
+[submodule "redmine-plugins/unread_issues"]
+	path = redmine-plugins/unread_issues
+	url = https://github.com/redcloak/unread_issues
