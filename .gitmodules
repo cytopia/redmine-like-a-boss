@@ -79,9 +79,6 @@
 [submodule "redmine-plugins/redmine_my_page"]
 	path = redmine-plugins/redmine_my_page
 	url = https://github.com/jrupesh/redmine_my_page
-[submodule "redmine-plugins/redmine_improved_searchbox"]
-	path = redmine-plugins/redmine_improved_searchbox
-	url = https://github.com/Haixing-Hu/redmine_improved_searchbox
 [submodule "redmine-plugins/redmine_dmsf"]
 	path = redmine-plugins/redmine_dmsf
 	url = https://github.com/danmunn/redmine_dmsf
@@ -109,3 +106,6 @@
 [submodule "redmine-plugins/recurring_tasks"]
 	path = redmine-plugins/recurring_tasks
 	url = https://github.com/nutso/redmine-plugin-recurring-tasks
+[submodule "redmine-plugins/redmine_improved_searchbox"]
+	path = redmine-plugins/redmine_improved_searchbox
+	url = https://github.com/Haixing-Hu/redmine_improved_searchbox
