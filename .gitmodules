@@ -79,9 +79,6 @@
 [submodule "redmine-plugins/redmine_dmsf"]
 	path = redmine-plugins/redmine_dmsf
 	url = https://github.com/danmunn/redmine_dmsf
-[submodule "redmine-plugins/usability"]
-	path = redmine-plugins/usability
-	url = https://github.com/tdvsdv/usability
 [submodule "redmine-plugins/redmine_planning"]
 	path = redmine-plugins/redmine_planning
 	url = https://github.com/MadEgg/redmine_planning
