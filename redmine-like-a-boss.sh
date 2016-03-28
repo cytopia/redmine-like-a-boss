@@ -243,7 +243,7 @@ list_plugins() {
 			fi
 		fi
 
-		echo "${_cnt} ${name} (${version})${_err}${_enabled}"
+		echo "${_cnt} ${name} (${section}) (${version})${_err}${_enabled}"
 
 		i="$((i + 1))"
 	done
