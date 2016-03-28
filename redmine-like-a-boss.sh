@@ -367,6 +367,8 @@ enable_plugin() {
 					echo "\"${_name}\" installed. Restart Redmine"
 					echo
 
+				else
+					echo "$(tput setaf 1)Aborted$(tput sgr0)"
 				fi
 				_pause
 			fi
