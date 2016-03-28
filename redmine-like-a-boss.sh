@@ -19,6 +19,8 @@ REDMINE_PLUGIN_PATH="${REDMINE_PATH}/${REDMINE_PLUGIN_DIR}"
 AVAIL_PLUGINS_DIR="redmine-plugins"
 AVAIL_PLUGINS_PATH="${BASE_PATH}/${AVAIL_PLUGINS_DIR}"
 
+AVAIL_PLUGIN_CONFIG_NAME="plugin.ini"
+AVAIL_PLUGIN_CONFIG_PATH="${AVAIL_PLUGINS_PATH}/${AVAIL_PLUGIN_CONFIG_NAME}"
 #AVAIL_THEMES_DIR="redmine-themes"
 #AVAIL_THEMES_PATH="${BASE_PATH}/${AVAIL_THEMES_DIR}"
 
@@ -98,11 +100,10 @@ _ask() {
 # Get multi-line string of all sections
 # headers without '[' and ']'
 _ini_get_all_sections() {
-	_ini_dir="${1}"
-	_ini_file="${2}"
+	_ini_file="${1}"
 
 	# Remove comments
-	_lines="$( cat "${_ini_dir}/${_ini_file}" | grep -vE '^[[:space:]]*;' | grep -vE '^[[:space:]]*#' )"
+	_lines="$( cat "${_ini_file}" | grep -vE '^[[:space:]]*;' | grep -vE '^[[:space:]]*#' )"
 
 	# Get only lines with sectiions
 	_sections="$( echo "${_lines}" | grep -oE '^[[:space:]]*\[[-_A-Za-z0-9]*\]' )"
@@ -115,13 +116,12 @@ _ini_get_all_sections() {
 
 # Get value of a section by a key
 _ini_get_section_value() {
-	_ini_dir="${1}"
-	_ini_file="${2}"
-	_ini_section="${3}"
-	_ini_key="${4}"
+	_ini_file="${1}"
+	_ini_section="${2}"
+	_ini_key="${3}"
 
 	# Remove comments
-	_lines="$( cat "${_ini_dir}/${_ini_file}" | grep -vE '^[[:space:]]*;' | grep -vE '^[[:space:]]*#' )"
+	_lines="$( cat "${_ini_file}" | grep -vE '^[[:space:]]*;' | grep -vE '^[[:space:]]*#' )"
 
 	# Get section up to (including) key
 	_section="$( echo "${_lines}" | awk "/^[[:space:]]*\[${_ini_section}\]/,/^[[:space:]]*${_ini_key}/ { print }" )"
@@ -204,7 +204,7 @@ main_menu() {
 
 list_plugins() {
 
-	plugins="$( _ini_get_all_sections "${AVAIL_PLUGINS_PATH}" "plugin.config" )"
+	plugins="$( _ini_get_all_sections "${AVAIL_PLUGIN_CONFIG_PATH}" )"
 	count="$( echo "${plugins}" | grep -c '' )"
 
 	_show_header
@@ -217,9 +217,9 @@ list_plugins() {
 
 		_cnt="$(printf "%2d" "${i}")"
 
-		name="$( _ini_get_section_value "${AVAIL_PLUGINS_PATH}" "plugin.config" "${section}" "name" )"
-		path="$( _ini_get_section_value "${AVAIL_PLUGINS_PATH}" "plugin.config" "${section}" "path" )"
-		version="$( _ini_get_section_value "${AVAIL_PLUGINS_PATH}" "plugin.config" "${section}" "version" )"
+		name="$( _ini_get_section_value "${AVAIL_PLUGIN_CONFIG_PATH}" "${section}" "name" )"
+		path="$( _ini_get_section_value "${AVAIL_PLUGIN_CONFIG_PATH}" "${section}" "path" )"
+		version="$( _ini_get_section_value "${AVAIL_PLUGIN_CONFIG_PATH}" "${section}" "version" )"
 
 		# Check if plugin exists and has a valid path
 		_err=""
@@ -257,7 +257,7 @@ enable_plugin() {
 
 	while true; do
 
-		plugins="$( _ini_get_all_sections "${AVAIL_PLUGINS_PATH}" "plugin.config" )"
+		plugins="$( _ini_get_all_sections "${AVAIL_PLUGIN_CONFIG_PATH}" )"
 
 		_show_header
 		echo
@@ -269,9 +269,9 @@ enable_plugin() {
 		valid_sections=""
 		for section in ${plugins}; do
 
-			name="$( _ini_get_section_value "${AVAIL_PLUGINS_PATH}" "plugin.config" "${section}" "name" )"
-			path="$( _ini_get_section_value "${AVAIL_PLUGINS_PATH}" "plugin.config" "${section}" "path" )"
-			version="$( _ini_get_section_value "${AVAIL_PLUGINS_PATH}" "plugin.config" "${section}" "version" )"
+			name="$( _ini_get_section_value "${AVAIL_PLUGIN_CONFIG_PATH}" "${section}" "name" )"
+			path="$( _ini_get_section_value "${AVAIL_PLUGIN_CONFIG_PATH}" "${section}" "path" )"
+			version="$( _ini_get_section_value "${AVAIL_PLUGIN_CONFIG_PATH}" "${section}" "version" )"
 
 			# Check if plugin exists and has a valid path
 			_err="0"
@@ -315,9 +315,9 @@ enable_plugin() {
 			if echo "${valid_numbers}" | grep -oE "^${number}$" >/dev/null 2>&1; then
 
 				_section="$( echo "${valid_sections}" | grep -oE "^${number}:[[:space:]]*.*" | sed "s/${number}:[[:space:]]*//" )"
-				_name="$( _ini_get_section_value "${AVAIL_PLUGINS_PATH}" "plugin.config" "${_section}" "name" )"
-				_build="$( _ini_get_section_value "${AVAIL_PLUGINS_PATH}" "plugin.config" "${_section}" "build" )"
-				_install="$( _ini_get_section_value "${AVAIL_PLUGINS_PATH}" "plugin.config" "${_section}" "install" )"
+				_name="$( _ini_get_section_value "${AVAIL_PLUGIN_CONFIG_PATH}" "${_section}" "name" )"
+				_build="$( _ini_get_section_value "${AVAIL_PLUGIN_CONFIG_PATH}" "${_section}" "build" )"
+				_install="$( _ini_get_section_value "${AVAIL_PLUGIN_CONFIG_PATH}" "${_section}" "install" )"
 
 
 
@@ -387,7 +387,7 @@ disable_plugin() {
 
 	while true; do
 
-		plugins="$( _ini_get_all_sections "${AVAIL_PLUGINS_PATH}" "plugin.config" )"
+		plugins="$( _ini_get_all_sections "${AVAIL_PLUGIN_CONFIG_PATH}" )"
 
 		_show_header
 		echo
@@ -408,9 +408,9 @@ disable_plugin() {
 			# Remove leading './' to get the section name
 			section="$( echo "${symlink}" | sed 's|\./||g' )"
 
-			name="$( _ini_get_section_value "${AVAIL_PLUGINS_PATH}" "plugin.config" "${section}" "name" )"
-			path="$( _ini_get_section_value "${AVAIL_PLUGINS_PATH}" "plugin.config" "${section}" "path" )"
-			version="$( _ini_get_section_value "${AVAIL_PLUGINS_PATH}" "plugin.config" "${section}" "version" )"
+			name="$( _ini_get_section_value "${AVAIL_PLUGIN_CONFIG_PATH}" "${section}" "name" )"
+			path="$( _ini_get_section_value "${AVAIL_PLUGIN_CONFIG_PATH}" "${section}" "path" )"
+			version="$( _ini_get_section_value "${AVAIL_PLUGIN_CONFIG_PATH}" "${section}" "version" )"
 
 			# Check if plugin exists and has a valid path
 			_err="0"
@@ -460,8 +460,8 @@ disable_plugin() {
 			if echo "${valid_numbers}" | grep -oE "^${number}$" >/dev/null 2>&1; then
 
 				_section="$( echo "${valid_sections}" | grep -oE "^${number}:[[:space:]]*.*" | sed "s/${number}:[[:space:]]*//" )"
-				_name="$( _ini_get_section_value "${AVAIL_PLUGINS_PATH}" "plugin.config" "${_section}" "name" )"
-				_remove="$( _ini_get_section_value "${AVAIL_PLUGINS_PATH}" "plugin.config" "${_section}" "remove" )"
+				_name="$( _ini_get_section_value "${AVAIL_PLUGIN_CONFIG_PATH}" "${_section}" "name" )"
+				_remove="$( _ini_get_section_value "${AVAIL_PLUGIN_CONFIG_PATH}" "${_section}" "remove" )"
 
 
 				if _ask "Uninstall \"${_name}\" (${_section}) ?" "Y"; then
