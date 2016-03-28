@@ -108,4 +108,4 @@
 	url = https://github.com/nutso/redmine-plugin-recurring-tasks
 [submodule "redmine-plugins/redmine_improved_searchbox"]
 	path = redmine-plugins/redmine_improved_searchbox
-	url = https://github.com/Haixing-Hu/redmine_improved_searchbox
+	url = https://github.com/ries-tech/redmine_improved_searchbox
