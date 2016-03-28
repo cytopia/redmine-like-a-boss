@@ -11,7 +11,7 @@ When plugins are chosen to be disabled, required tasks are run (down migrations)
 Plugin updates are simple too, as you only need to `git pull` in the appropriate git submodule repository.
 
 
-## Available Plugins
+## 1. Available Plugins
 
 * Issuefy (issuefy)
 * Line numbers (line_numbers)
@@ -40,9 +40,9 @@ Plugin updates are simple too, as you only need to `git pull` in the appropriate
 * Hide Sidebar (sidebar_hide)
 * Unread issues (unread_issues)
 
-## Usage
+## 2. Usage
 
-### Main Menu
+### 2.1 Main Menu
 ```shell
 ------------------------------------------------------------
 -                  Redmine like a boss                     -
@@ -58,7 +58,7 @@ What do you want to do?
 
 Enter a number between 1-9: 2
 ```
-### List menu
+### 2.2 List menu
 ```shell
                   Redmine like a boss                     -
 ------------------------------------------------------------
@@ -95,7 +95,7 @@ Available plugins (26)
 Press any key to continue...
 ```
 
-### Enable menu
+### 2.3 Enable menu
 ```shell
 ------------------------------------------------------------
 -                  Redmine like a boss                     -
@@ -142,7 +142,7 @@ Install potentiel new Redmine bundles? (Y/n)y
 Press any key to continue...
 ```
 
-### Disable menu
+### 2.4 Disable menu
 ```shell
 ------------------------------------------------------------
 -                  Redmine like a boss                     -
@@ -163,6 +163,6 @@ Remove symlink? (Y/n)y
 Press any key to continue...
 ```
 
-## Contribution
+## 3. Contribution
 
 Feel free to add more plugins.
