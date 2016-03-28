@@ -12,7 +12,7 @@ When plugins are chosen to be enabled, they are simply symlinked to the proper r
 
 When plugins are chosen to be disabled, required tasks are run (down migrations) and the symlink is simply removed. The plugin directory will still be there waiting to be enabled again.
 
-** Updates**
+**Updates**
 
 Plugin updates are simple too, as you only need to `git pull` in the appropriate git submodule repository.
 
