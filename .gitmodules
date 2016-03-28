@@ -109,3 +109,6 @@
 [submodule "redmine-themes/gitmike"]
 	path = redmine-themes/gitmike
 	url = https://github.com/makotokw/redmine-theme-gitmike
+[submodule "redmine-plugins/redmine-plugin-recurring-tasks"]
+	path = redmine-plugins/redmine-plugin-recurring-tasks
+	url = https://github.com/nutso/redmine-plugin-recurring-tasks
