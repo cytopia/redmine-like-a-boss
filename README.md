@@ -142,6 +142,27 @@ Install potentiel new Redmine bundles? (Y/n)y
 Press any key to continue...
 ```
 
+### Disable menu
+```shell
+------------------------------------------------------------
+-                  Redmine like a boss                     -
+------------------------------------------------------------
+
+Uninstall plugins
+
+ 1 Issuefy (0.2.0)
+ 2 Line numbers (1.0.0)
+
+Enter the number of plugin to enable or 'q' to abort: 1
+Uninstall "Issuefy" (issuefy) ? (Y/n)y
+"Issuefy" does not require a database downgrade.
+Remove symlink? (Y/n)y
+
+"Issuefy" uninstalled. Restart Redmine
+
+Press any key to continue...
+```
+
 ## Contribution
 
 Feel free to add more plugins.
