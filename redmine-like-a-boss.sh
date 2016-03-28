@@ -1,18 +1,38 @@
-#!/bin/sh
+#!/bin/sh -u
 #
-##/usr/bin/env bash
+
+################################################################################
+#
+#  V A R I A B L E S
+#
+################################################################################
+
+BASE_PATH="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd -P)"
+
+REDMINE_DIR="redmine"
+REDMINE_PATH="${BASE_PATH}/${REDMINE_DIR}"
+
+REDMINE_PLUGIN_DIR="plugins"
+REDMINE_PLUGIN_PATH="${REDMINE_PATH}/${REDMINE_PLUGIN_DIR}"
 
 
-#check for:
+AVAIL_PLUGINS_DIR="redmine-plugins"
+AVAIL_PLUGINS_PATH="${BASE_PATH}/${AVAIL_PLUGINS_DIR}"
 
-#wget
-#unzip
-#git
-#rake
-#bundle
-#realpath
+#AVAIL_THEMES_DIR="redmine-themes"
+#AVAIL_THEMES_PATH="${BASE_PATH}/${AVAIL_THEMES_DIR}"
 
 
+
+
+################################################################################
+#
+#  R E Q U I R E M E N T S
+#
+################################################################################
+
+
+# Check requirements
 if ! command -v rake > /dev/null 2>&1 ; then
 	echo "binary 'rake' not found but required."
 	exit 1
@@ -27,10 +47,13 @@ if ! command -v realpath > /dev/null 2>&1 ; then
 fi
 
 
-DIR_BASE=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd -P)
-DIR_REDMINE="${DIR_BASE}/redmine"
-DIR_REDMINE_PLUGINS="${DIR_BASE}/redmine-plugins"
-DIR_REDMINE_THEMES="${DIR_BASE}/redmine-themes"
+
+
+################################################################################
+#
+#  H E L P E R S
+#
+################################################################################
 
 
 # Ask a yes/no question and read users choise
@@ -71,9 +94,6 @@ _ask() {
 
 	done
 }
-
-
-
 
 # Get multi-line string of all sections
 # headers without '[' and ']'
@@ -118,7 +138,6 @@ _ini_get_section_value() {
 	echo "${_value}"
 }
 
-
 _pause() {
 	read -rsp $'Press any key to continue...\n' -n1 key
 }
@@ -131,6 +150,15 @@ _show_header() {
 	echo "-                  Redmine like a boss                     -"
 	echo "------------------------------------------------------------"
 }
+
+
+
+
+################################################################################
+#
+#  F U N C T I O N S
+#
+################################################################################
 
 
 main_menu() {
@@ -176,7 +204,7 @@ main_menu() {
 
 list_plugins() {
 
-	plugins="$( _ini_get_all_sections "${DIR_REDMINE_PLUGINS}" "plugin.config" )"
+	plugins="$( _ini_get_all_sections "${AVAIL_PLUGINS_PATH}" "plugin.config" )"
 	count="$( echo "${plugins}" | grep -c '' )"
 
 	_show_header
@@ -189,29 +217,29 @@ list_plugins() {
 
 		_cnt="$(printf "%2d" "${i}")"
 
-		name="$( _ini_get_section_value "${DIR_REDMINE_PLUGINS}" "plugin.config" "${section}" "name" )"
-		path="$( _ini_get_section_value "${DIR_REDMINE_PLUGINS}" "plugin.config" "${section}" "path" )"
-		version="$( _ini_get_section_value "${DIR_REDMINE_PLUGINS}" "plugin.config" "${section}" "version" )"
+		name="$( _ini_get_section_value "${AVAIL_PLUGINS_PATH}" "plugin.config" "${section}" "name" )"
+		path="$( _ini_get_section_value "${AVAIL_PLUGINS_PATH}" "plugin.config" "${section}" "path" )"
+		version="$( _ini_get_section_value "${AVAIL_PLUGINS_PATH}" "plugin.config" "${section}" "version" )"
 
 		# Check if plugin exists and has a valid path
 		_err=""
 		if [ "${path}" = "" ]; then
 			_err=" $(tput setaf 1)(Broken: No path specified in plugin.config)$(tput sgr0)"
-		elif [ ! -d "${DIR_REDMINE_PLUGINS}/${path}" ]; then
-			_err=" $(tput setaf 1)(Broken: Invalid path: redmine-plugins/${path})$(tput sgr0)"
+		elif [ ! -d "${AVAIL_PLUGINS_PATH}/${path}" ]; then
+			_err=" $(tput setaf 1)(Broken: Invalid path: ${AVAIL_PLUGINS_DIR}/${path})$(tput sgr0)"
 		fi
 
 		# Check if plugin is symlinked (enabled)
 		_enabled=""
-		if [ -L "${DIR_REDMINE}/plugins/${section}" ]; then
+		if [ -L "${REDMINE_PLUGIN_PATH}/${section}" ]; then
 			# Check symlink
-			real_path="$( realpath "${DIR_REDMINE}/plugins/${section}" )"
-			plug_path="${DIR_REDMINE_PLUGINS}/${path}"
+			real_path="$( realpath "${REDMINE_PLUGIN_PATH}/${section}" )"
+			plug_path="${AVAIL_PLUGINS_PATH}/${path}"
 
 			if [ "${real_path}" = "${plug_path}" ]; then
 				_enabled=" $(tput setaf 2)(Enabled)$(tput sgr0)"
 			else
-				_err=" $(tput setaf 1)(Enabled but broken: Invalid symlink for redmine/plugins/${section})$(tput sgr0)"
+				_err=" $(tput setaf 1)(Enabled but broken: Invalid symlink for ${AVAIL_PLUGINS_DIR}/${section})$(tput sgr0)"
 			fi
 		fi
 
@@ -229,7 +257,7 @@ enable_plugin() {
 
 	while true; do
 
-		plugins="$( _ini_get_all_sections "${DIR_REDMINE_PLUGINS}" "plugin.config" )"
+		plugins="$( _ini_get_all_sections "${AVAIL_PLUGINS_PATH}" "plugin.config" )"
 
 		_show_header
 		echo
@@ -241,15 +269,15 @@ enable_plugin() {
 		valid_sections=""
 		for section in ${plugins}; do
 
-			name="$( _ini_get_section_value "${DIR_REDMINE_PLUGINS}" "plugin.config" "${section}" "name" )"
-			path="$( _ini_get_section_value "${DIR_REDMINE_PLUGINS}" "plugin.config" "${section}" "path" )"
-			version="$( _ini_get_section_value "${DIR_REDMINE_PLUGINS}" "plugin.config" "${section}" "version" )"
+			name="$( _ini_get_section_value "${AVAIL_PLUGINS_PATH}" "plugin.config" "${section}" "name" )"
+			path="$( _ini_get_section_value "${AVAIL_PLUGINS_PATH}" "plugin.config" "${section}" "path" )"
+			version="$( _ini_get_section_value "${AVAIL_PLUGINS_PATH}" "plugin.config" "${section}" "version" )"
 
 			# Check if plugin exists and has a valid path
 			_err="0"
 			if [ "${path}" = "" ]; then
 				_err="1"
-			elif [ ! -d "${DIR_REDMINE_PLUGINS}/${path}" ]; then
+			elif [ ! -d "${AVAIL_PLUGINS_PATH}/${path}" ]; then
 				_err="2"
 			fi
 
@@ -257,7 +285,7 @@ enable_plugin() {
 			# Symlink could be broken, but still there
 			# in that case we cannot enable a plugin with the same name
 			_enabled="0"
-			if [ -L "${DIR_REDMINE}/plugins/${section}" ]; then
+			if [ -L "${REDMINE_PLUGIN_PATH}/${section}" ]; then
 				_enabled="1"
 			fi
 
@@ -287,27 +315,27 @@ enable_plugin() {
 			if echo "${valid_numbers}" | grep -oE "^${number}$" >/dev/null 2>&1; then
 
 				_section="$( echo "${valid_sections}" | grep -oE "^${number}:[[:space:]]*.*" | sed "s/${number}:[[:space:]]*//" )"
-				_name="$( _ini_get_section_value "${DIR_REDMINE_PLUGINS}" "plugin.config" "${_section}" "name" )"
-				_build="$( _ini_get_section_value "${DIR_REDMINE_PLUGINS}" "plugin.config" "${_section}" "build" )"
-				_install="$( _ini_get_section_value "${DIR_REDMINE_PLUGINS}" "plugin.config" "${_section}" "install" )"
+				_name="$( _ini_get_section_value "${AVAIL_PLUGINS_PATH}" "plugin.config" "${_section}" "name" )"
+				_build="$( _ini_get_section_value "${AVAIL_PLUGINS_PATH}" "plugin.config" "${_section}" "build" )"
+				_install="$( _ini_get_section_value "${AVAIL_PLUGINS_PATH}" "plugin.config" "${_section}" "install" )"
 
 
 
 				if _ask "Symlink \"${_name}\" (${_section}) to Redmin plugin directory?" "Y"; then
 
 					### 01 Symlink
-					cd "${DIR_BASE}"
-					ln -s "../../redmine-plugins/${_section}" "redmine/plugins/${_section}"
+					cd "${BASE_PATH}"
+					ln -s "../../${AVAIL_PLUGINS_DIR}/${_section}" "${REDMINE_DIR}/${REDMINE_PLUGIN_DIR}/${_section}"
 
 					### 02 Update Bundles
 					if _ask "Update Redmine bundles?" "Y"; then
-						cd "${DIR_REDMINE}"
+						cd "${REDMINE_PATH}"
 						bundle update
 					fi
 
 					### 03 Install Bundles
 					if _ask "Install potentiel new Redmine bundles?" "Y"; then
-						cd "${DIR_REDMINE}"
+						cd "${REDMINE_PATH}"
 						bundle install --without development test
 					fi
 
@@ -316,7 +344,7 @@ enable_plugin() {
 						echo "\"${_name}\" requires to be build first with the following command:"
 						echo  "  \$ ${_build}"
 						if _ask "Execute build?" "Y"; then
-							cd "${DIR_REDMINE_PLUGINS}/${_section}/"
+							cd "${AVAIL_PLUGINS_PATH}/${_section}/"
 							eval "${_build}"
 						fi
 					else
@@ -328,7 +356,7 @@ enable_plugin() {
 						echo "\"${_name}\" requires the following database migrations:"
 						echo  "  \$ ${_install}"
 						if _ask "Run database migrations?" "Y"; then
-							cd "${DIR_REDMINE}"
+							cd "${REDMINE_PATH}"
 							eval "${_install}"
 						fi
 					else
@@ -359,7 +387,7 @@ disable_plugin() {
 
 	while true; do
 
-		plugins="$( _ini_get_all_sections "${DIR_REDMINE_PLUGINS}" "plugin.config" )"
+		plugins="$( _ini_get_all_sections "${AVAIL_PLUGINS_PATH}" "plugin.config" )"
 
 		_show_header
 		echo
@@ -371,7 +399,7 @@ disable_plugin() {
 		valid_sections=""
 
 
-		cd "${DIR_REDMINE}/plugins"
+		cd "${REDMINE_PLUGIN_PATH}"
 		symlinks="$( find . -type l )"
 
 
@@ -380,24 +408,24 @@ disable_plugin() {
 			# Remove leading './' to get the section name
 			section="$( echo "${symlink}" | sed 's|\./||g' )"
 
-			name="$( _ini_get_section_value "${DIR_REDMINE_PLUGINS}" "plugin.config" "${section}" "name" )"
-			path="$( _ini_get_section_value "${DIR_REDMINE_PLUGINS}" "plugin.config" "${section}" "path" )"
-			version="$( _ini_get_section_value "${DIR_REDMINE_PLUGINS}" "plugin.config" "${section}" "version" )"
+			name="$( _ini_get_section_value "${AVAIL_PLUGINS_PATH}" "plugin.config" "${section}" "name" )"
+			path="$( _ini_get_section_value "${AVAIL_PLUGINS_PATH}" "plugin.config" "${section}" "path" )"
+			version="$( _ini_get_section_value "${AVAIL_PLUGINS_PATH}" "plugin.config" "${section}" "version" )"
 
 			# Check if plugin exists and has a valid path
 			_err="0"
 			if [ "${path}" = "" ]; then
 				_err="1"
-			elif [ ! -d "${DIR_REDMINE_PLUGINS}/${path}" ]; then
+			elif [ ! -d "${AVAIL_PLUGINS_PATH}/${path}" ]; then
 				_err="2"
 			fi
 
 			# Check if plugin is symlinked (enabled)
 			_enabled="0"
-			if [ -L "${DIR_REDMINE}/plugins/${section}" ]; then
+			if [ -L "${REDMINE_PLUGIN_PATH}/${section}" ]; then
 				# Check symlink
-				real_path="$( realpath "${DIR_REDMINE}/plugins/${section}" )"
-				plug_path="${DIR_REDMINE_PLUGINS}/${path}"
+				real_path="$( realpath "${REDMINE_PLUGIN_PATH}/${section}" )"
+				plug_path="${AVAIL_PLUGINS_PATH}/${path}"
 
 				if [ "${real_path}" = "${plug_path}" ]; then
 					_enabled="1"
@@ -432,8 +460,8 @@ disable_plugin() {
 			if echo "${valid_numbers}" | grep -oE "^${number}$" >/dev/null 2>&1; then
 
 				_section="$( echo "${valid_sections}" | grep -oE "^${number}:[[:space:]]*.*" | sed "s/${number}:[[:space:]]*//" )"
-				_name="$( _ini_get_section_value "${DIR_REDMINE_PLUGINS}" "plugin.config" "${_section}" "name" )"
-				_remove="$( _ini_get_section_value "${DIR_REDMINE_PLUGINS}" "plugin.config" "${_section}" "remove" )"
+				_name="$( _ini_get_section_value "${AVAIL_PLUGINS_PATH}" "plugin.config" "${_section}" "name" )"
+				_remove="$( _ini_get_section_value "${AVAIL_PLUGINS_PATH}" "plugin.config" "${_section}" "remove" )"
 
 
 				if _ask "Uninstall \"${_name}\" (${_section}) ?" "Y"; then
@@ -443,11 +471,11 @@ disable_plugin() {
 						echo "\"${_name}\" requires a database downgrade with the following command:"
 						echo  "  \$ ${_remove}"
 						if _ask "Execute downgrade?" "Y"; then
-							cd "${DIR_REDMINE}"
+							cd "${REDMINE_PATH}"
 							eval "${_remove}"
 
 							if _ask "Remove symlink?" "Y"; then
-								rm "${DIR_REDMINE}/plugins/${_section}"
+								rm "${REDMINE_PLUGIN_PATH}/${_section}"
 								echo
 								echo "\"${_name}\" uninstalled. Restart Redmine"
 								echo
@@ -460,7 +488,7 @@ disable_plugin() {
 					else
 						echo "\"${_name}\" does not require a database downgrade."
 						if _ask "Remove symlink?" "Y"; then
-							rm "${DIR_REDMINE}/plugins/${_section}"
+							rm "${REDMINE_PLUGIN_PATH}/${_section}"
 							echo
 							echo "\"${_name}\" uninstalled. Restart Redmine"
 							echo
@@ -483,6 +511,14 @@ disable_plugin() {
 
 
 
+
+
+
+################################################################################
+#
+#  M A I N   E N T R Y   P O I N T
+#
+################################################################################
 
 
 while true; do
