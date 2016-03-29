@@ -16,8 +16,9 @@ When plugins are chosen to be disabled, required tasks are run (down migrations)
 
 Plugin updates are simple too, as you only need to `git pull` in the appropriate git submodule repository.
 
+## Available Assets
 
-## 1. Available Plugins
+### 1.1 Available Plugins
 
 * Issuefy ([issuefy](https://github.com/tchx84/issuefy))
 * Line numbers ([line_numbers](https://github.com/cdwertmann/line_numbers))
@@ -45,6 +46,16 @@ Plugin updates are simple too, as you only need to `git pull` in the appropriate
 * Redmine Zen Edit ([redmine_zenedit](https://github.com/RCRM/redmine_zenedit))
 * Hide Sidebar ([sidebar_hide](https://github.com/bdemirkir/sidebar_hide))
 * Unread issues ([unread_issues](https://github.com/redcloak/unread_issues))
+
+### 1.2 Available Themes
+
+* A1 Theme ([a1](https://github.com/RCRM/a1))
+* Circle Theme ([circle](https://github.com/RCRM/circle))
+* Coffee Theme ([coffee](https://github.com/RCRM/coffee))
+* Redmine Gitmike Theme ([redmine-theme-gitmike](https://github.com/makotokw/redmine-theme-gitmike))
+* Highrise Theme ([highrise](https://github.com/RCRM/highrise))
+* Progressive Redmine Theme ([redmine-progressive-theme](https://github.com/stgeneral/redmine-progressive-theme))
+* Redmine CRM Theme ([redminecrm](https://github.com/RCRM/redminecrm))
 
 ## 2. Usage
 
