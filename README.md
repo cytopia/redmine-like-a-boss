@@ -68,6 +68,18 @@ See [plugin.ini](https://github.com/cytopia/redmine-like-a-boss/blob/master/redm
 
 ## 2. Usage
 
+Simply start [redmine-like-a-boss.sh](https://github.com/cytopia/redmine-like-a-boss/blob/master/redmine-like-a-boss.sh) and follow the menu structure. No action will be taken without your explicit OK.
+
+What actions does the script do?
+
+* bundle update
+* bundle install --without development test
+* Database up/down migrations
+* Build actions
+
+The last two actions are defined in [plugin.ini](https://github.com/cytopia/redmine-like-a-boss/blob/master/redmine-plugins/plugin.ini) for each plugin separately.
+
+
 ### 2.1 Main Menu
 ```shell
 ------------------------------------------------------------
