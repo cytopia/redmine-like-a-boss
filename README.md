@@ -4,21 +4,21 @@ Easy redmine plugin/theme management via git submodules and symlinks.
 
 Use `redmine-lile-a-boss.sh` to list available plugins and themes and enable/disable as desired. You don't need to worry about database up/down migrations or additional install builds as it is handled automatically (See [plugin.ini](https://github.com/cytopia/redmine-like-a-boss/blob/master/redmine-plugins/plugin.ini) and [theme.ini](https://github.com/cytopia/redmine-like-a-boss/blob/master/redmine-themes/theme.ini) for plugin/theme configuration.
 
-## 1. Workflow description
+## 1. How does it work?
 
-### 1.2 Installation (enable)
+### 1.1 Installation (enable)
 
 When plugins are chosen to be enabled, they are simply symlinked to the proper redmine plugins directory and all required tasks (db migrations, builds etc) are done afer your explicit OK.
 
-### 1.3 Uninstallation (disable)
+### 1.2 Uninstallation (disable)
 
 When plugins are chosen to be disabled, required tasks are run (down migrations) after your explicit OK and only the symlink is removed. The plugin directory itself will still remain untouched, ready to be enabled again.
 
-### 1.4 Updates (git pull)
+### 1.3 Updates (git pull)
 
 Plugin updates are simple too, as you only need to `git pull` in the appropriate git submodule repository.
 
-### 1.5 Manually
+### 1.4 Manually
 
 You can also use this repository and still do everything manually. All you need to do by hand is symlink the plugin/theme to the redmine directory and run potential database migrations.
 
