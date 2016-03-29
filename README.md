@@ -92,6 +92,10 @@ What do you want to do?
    3. Enable plugin
    4. Disable plugin
 
+   5. List/check themes
+   6. Enable theme
+   7. Disable theme
+
    9. Exit program
 
 Enter a number between 1-9: 2
