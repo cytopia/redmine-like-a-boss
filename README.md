@@ -20,6 +20,8 @@ Plugin updates are simple too, as you only need to `git pull` in the appropriate
 
 ### 1.1 Available Plugins
 
+See [plugin.ini](https://github.com/cytopia/redmine-like-a-boss/blob/master/redmine-plugins/plugin.ini) for description, license, author and version information.
+
 * Issuefy ([issuefy](https://github.com/tchx84/issuefy))
 * Line numbers ([line_numbers](https://github.com/cdwertmann/line_numbers))
 * Progressive Projects List ([progressive_projects_list](https://github.com/stgeneral/redmine-progressive-projects-list))
