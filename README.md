@@ -4,33 +4,36 @@ Easy redmine plugin/theme management via git submodules and symlinks.
 
 Use `redmine-lile-a-boss.sh` to list available plugins and themes and enable/disable as desired. You don't need to worry about database up/down migrations or additional install builds as it is handled automatically (See [plugin.ini](https://github.com/cytopia/redmine-like-a-boss/blob/master/redmine-plugins/plugin.ini) for plugin configuration.
 
-**Installation**
+## 1. Workflow description
+
+### 1.2 Installation (enable)
 
 When plugins are chosen to be enabled, they are simply symlinked to the proper redmine plugins directory and all required tasks (db migrations, builds etc) are done afer your explicit OK.
 
-**Uninstallation**
+### 1.3 Uninstallation (disable)
 
 When plugins are chosen to be disabled, required tasks are run (down migrations) after your explicit OK and only the symlink is removed. The plugin directory itself will still remain untouched, ready to be enabled again.
 
-**Manually**
+### 1.4 Updates (git pull)
+
+Plugin updates are simple too, as you only need to `git pull` in the appropriate git submodule repository.
+
+### 1.5 Manually
 
 You can also use this repository and still do everything manually. All you need to do by hand is symlink the plugin/theme to the redmine directory and run potential database migrations.
 
 
-**Updates**
 
-Plugin updates are simple too, as you only need to `git pull` in the appropriate git submodule repository.
+## 2. Available Assets
 
-## Available Assets
-
-### 1.1 Redmine
+### 2.1 Redmine
 
 * Redmine ([redmine](https://github.com/redmine/redmine)) 3.2.1
 
 Redmine is included as a git submodule from the official repository currently in version `3.2.1`. This repository will always add the latest stable version so you only need to update `redmine-like-a-boss`.
 You can however checkout any version you like within the submodule to fit your needs.
 
-### 1.2 Available Plugins
+### 2.2 Available Plugins
 
 See [plugin.ini](https://github.com/cytopia/redmine-like-a-boss/blob/master/redmine-plugins/plugin.ini) for description, license, author and version information.
 
@@ -61,7 +64,7 @@ See [plugin.ini](https://github.com/cytopia/redmine-like-a-boss/blob/master/redm
 * Hide Sidebar ([sidebar_hide](https://github.com/bdemirkir/sidebar_hide))
 * Unread issues ([unread_issues](https://github.com/redcloak/unread_issues))
 
-### 1.3 Available Themes
+### 2.3 Available Themes
 
 * A1 Theme ([a1](https://github.com/RCRM/a1))
 * Circle Theme ([circle](https://github.com/RCRM/circle))
@@ -71,7 +74,7 @@ See [plugin.ini](https://github.com/cytopia/redmine-like-a-boss/blob/master/redm
 * Progressive Redmine Theme ([redmine-progressive-theme](https://github.com/stgeneral/redmine-progressive-theme))
 * Redmine CRM Theme ([redminecrm](https://github.com/RCRM/redminecrm))
 
-## 2. Usage
+## 3. Usage
 
 Simply start [redmine-like-a-boss.sh](https://github.com/cytopia/redmine-like-a-boss/blob/master/redmine-like-a-boss.sh) and follow the menu structure. No action will be taken without your explicit OK.
 
@@ -85,7 +88,7 @@ What actions does the script do?
 The last two actions are defined in [plugin.ini](https://github.com/cytopia/redmine-like-a-boss/blob/master/redmine-plugins/plugin.ini) for each plugin separately.
 
 
-### 2.1 Main Menu
+### 3.1 Main Menu
 ```shell
 ------------------------------------------------------------
 -                  Redmine like a boss                     -
@@ -105,7 +108,7 @@ What do you want to do?
 
 Enter a number between 1-9: 2
 ```
-### 2.2 List menu
+### 3.2 List menu
 ```shell
 ------------------------------------------------------------
                   Redmine like a boss                     -
@@ -143,7 +146,7 @@ Available plugins (26)
 Press any key to continue...
 ```
 
-### 2.3 Enable menu
+### 3.3 Enable menu
 ```shell
 ------------------------------------------------------------
 -                  Redmine like a boss                     -
@@ -190,7 +193,7 @@ Install potentiel new Redmine bundles? (Y/n)y
 Press any key to continue...
 ```
 
-### 2.4 Disable menu
+### 3.4 Disable menu
 ```shell
 ------------------------------------------------------------
 -                  Redmine like a boss                     -
@@ -211,6 +214,6 @@ Remove symlink? (Y/n)y
 Press any key to continue...
 ```
 
-## 3. Contribution
+## 4. Contribution
 
 Feel free to add more plugins.
