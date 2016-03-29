@@ -18,7 +18,14 @@ Plugin updates are simple too, as you only need to `git pull` in the appropriate
 
 ## Available Assets
 
-### 1.1 Available Plugins
+### 1.1 Redmine
+
+* Redmine ([redmine](https://github.com/redmine/redmine)) 3.2.1
+
+Redmine is included as a git submodule from the official repository currently in version `3.2.1`. This repository will always add the latest stable version so you only need to update `redmine-like-a-boss`.
+You can however checkout any version you like within the submodule to fit your needs.
+
+### 1.2 Available Plugins
 
 See [plugin.ini](https://github.com/cytopia/redmine-like-a-boss/blob/master/redmine-plugins/plugin.ini) for description, license, author and version information.
 
@@ -49,7 +56,7 @@ See [plugin.ini](https://github.com/cytopia/redmine-like-a-boss/blob/master/redm
 * Hide Sidebar ([sidebar_hide](https://github.com/bdemirkir/sidebar_hide))
 * Unread issues ([unread_issues](https://github.com/redcloak/unread_issues))
 
-### 1.2 Available Themes
+### 1.3 Available Themes
 
 * A1 Theme ([a1](https://github.com/RCRM/a1))
 * Circle Theme ([circle](https://github.com/RCRM/circle))
