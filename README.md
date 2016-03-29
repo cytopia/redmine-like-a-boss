@@ -12,6 +12,11 @@ When plugins are chosen to be enabled, they are simply symlinked to the proper r
 
 When plugins are chosen to be disabled, required tasks are run (down migrations) after your explicit OK and only the symlink is removed. The plugin directory itself will still remain untouched, ready to be enabled again.
 
+**Manually**
+
+You can also use this repository and still do everything manually. All you need to do by hand is symlink the plugin/theme to the redmine directory and run potential database migrations.
+
+
 **Updates**
 
 Plugin updates are simple too, as you only need to `git pull` in the appropriate git submodule repository.
