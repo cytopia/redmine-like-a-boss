@@ -66,6 +66,8 @@ See [plugin.ini](https://github.com/cytopia/redmine-like-a-boss/blob/master/redm
 
 ### 2.3 Available Themes
 
+See [theme.ini](https://github.com/cytopia/redmine-like-a-boss/blob/master/redmine-themes/theme.ini) for description, license, author and version information.
+
 * A1 Theme ([a1](https://github.com/RCRM/a1))
 * Circle Theme ([circle](https://github.com/RCRM/circle))
 * Coffee Theme ([coffee](https://github.com/RCRM/coffee))
