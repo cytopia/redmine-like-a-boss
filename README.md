@@ -10,7 +10,7 @@ When plugins are chosen to be enabled, they are simply symlinked to the proper r
 
 **Uninstallation**
 
-When plugins are chosen to be disabled, required tasks are run (down migrations) and the symlink is simply removed. The plugin directory will still be there waiting to be enabled again.
+When plugins are chosen to be disabled, required tasks are run (down migrations) after your explicit OK and only the symlink is removed. The plugin directory itself will still remain untouched, ready to be enabled again.
 
 **Updates**
 
@@ -19,32 +19,32 @@ Plugin updates are simple too, as you only need to `git pull` in the appropriate
 
 ## 1. Available Plugins
 
-* Issuefy (issuefy)
-* Line numbers (line_numbers)
-* Progressive Projects List (progressive_projects_list)
-* Recurring Tasks (recurring_tasks)
-* Redmine Agile (redmine_agile)
-* Redmine Announcements (redmine_announcements)
-* Redmine Checklists (redmine_checklists)
-* Redmine CMS (redmine_cms)
-* Redmine CRM (redmine_contacts)
-* Redmine Dashboard (redmine_dashboard)
-* Did You Mean Plugin (redmine_didyoumean)
-* Redmine Document Management System (redmine_dmsf)
-* Redmine Favorite projects (redmine_favorite_projects)
-* Redmine Finance (redmine_finance)
-* Redmine Gist (redmine_gist)
-* Project Search Box Plugin (redmine_improved_searchbox)
-* Redmine Issues Tree (redmine_issues_tree)
-* Redmine My Page Customization (redmine_my_page)
-* Redmine People (redmine_people)
-* Redmine Planning (redmine_planning)
-* Redmine Q&A plugin (redmine_questions)
-* Redmine Tags (redmine_tags)
-* Redmine Tweaks (redmine_tweaks
-* Redmine Zen Edit (redmine_zenedit)
-* Hide Sidebar (sidebar_hide)
-* Unread issues (unread_issues)
+* Issuefy ([issuefy](https://github.com/tchx84/issuefy))
+* Line numbers ([line_numbers](https://github.com/cdwertmann/line_numbers))
+* Progressive Projects List ([progressive_projects_list](https://github.com/stgeneral/redmine-progressive-projects-list))
+* Recurring Tasks ([recurring_tasks](https://github.com/nutso/redmine-plugin-recurring-tasks))
+* Redmine Agile ([redmine_agile](https://github.com/RCRM/redmine_agile))
+* Redmine Announcements ([redmine_announcements](https://github.com/buoyant/redmine_announcements))
+* Redmine Checklists ([redmine_checklists](https://github.com/RCRM/redmine_checklists))
+* Redmine CMS ([redmine_cms](https://github.com/RCRM/redmine_cms))
+* Redmine CRM ([redmine_contacts](https://github.com/RCRM/redmine_contacts))
+* Redmine Dashboard ([redmine_dashboard](https://github.com/jgraichen/redmine_dashboard))
+* Did You Mean Plugin ([redmine_didyoumean](https://github.com/abahgat/redmine_didyoumean))
+* Redmine Document Management System ([redmine_dmsf](https://github.com/danmunn/redmine_dmsf))
+* Redmine Favorite projects ([redmine_favorite_projects](https://github.com/RCRM/redmine_favorite_projects))
+* Redmine Finance ([redmine_finance](https://github.com/RCRM/redmine_finance))
+* Redmine Gist ([redmine_gist](https://github.com/dergachev/redmine_gist))
+* Project Search Box Plugin ([redmine_improved_searchbox](https://github.com/ries-tech/redmine_improved_searchbox))
+* Redmine Issues Tree ([redmine_issues_tree](https://github.com/Loriowar/redmine_issues_tree))
+* Redmine My Page Customization ([redmine_my_page](https://github.com/jrupesh/redmine_my_page))
+* Redmine People ([redmine_people](https://github.com/RCRM/redmine_people))
+* Redmine Planning ([redmine_planning](https://github.com/MadEgg/redmine_planning))
+* Redmine Q&A plugin ([redmine_questions](https://github.com/RCRM/redmine_questions))
+* Redmine Tags ([redmine_tags](https://github.com/ixti/redmine_tags))
+* Redmine Tweaks ([redmine_tweaks](https://github.com/alexandermeindl/redmine_tweaks))
+* Redmine Zen Edit ([redmine_zenedit](https://github.com/RCRM/redmine_zenedit))
+* Hide Sidebar ([sidebar_hide](https://github.com/bdemirkir/sidebar_hide))
+* Unread issues ([unread_issues](https://github.com/redcloak/unread_issues))
 
 ## 2. Usage
 
