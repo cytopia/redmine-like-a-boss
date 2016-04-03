@@ -106,3 +106,6 @@
 [submodule "redmine-plugins/unread_issues"]
 	path = redmine-plugins/unread_issues
 	url = https://github.com/redcloak/unread_issues
+[submodule "redmine-themes/redmine-theme-flat"]
+	path = redmine-themes/redmine-theme-flat
+	url = https://github.com/tsi/redmine-theme-flat

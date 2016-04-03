@@ -86,6 +86,7 @@ See [theme.ini](https://github.com/cytopia/redmine-like-a-boss/blob/master/redmi
 * Highrise Theme ([highrise](https://github.com/RCRM/highrise))
 * Progressive Redmine Theme ([redmine-progressive-theme](https://github.com/stgeneral/redmine-progressive-theme))
 * Redmine CRM Theme ([redminecrm](https://github.com/RCRM/redminecrm))
+* Redmine Theme Flat ([redmine-theme-flat](https://github.com/tsi/redmine-theme-flat))
 
 ## 2. Usage
 
